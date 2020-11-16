@@ -98,6 +98,10 @@ class Ball(pygame.sprite.Sprite):
     def bounce_paddle(self):
         angle = math.atan2(self.direction[0], -self.direction[1])# + 10*random.random()
         self.direction= [math.cos(angle), math.sin(angle)]
+        if self.rect.right >= SCREEN_WIDTH/2:
+            self.rect.move_ip(-1,0)
+        else:
+            self.rect.move_ip(1,0)
         
         
 
