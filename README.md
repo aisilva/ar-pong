@@ -1,4 +1,3 @@
 Augmented reality pong using AprilTags as paddles!
 
-![ar-pong-demo](https://github.com/aisilva/ar-pong/ar-pong-demo.gif)
-
+![](https://github.com/aisilva/ar-pong/blob/main/ar-pong-demo.gif)
