@@ -133,16 +133,27 @@ CAMERA_INDEX = 0
 cap = cv2.VideoCapture(CAMERA_INDEX)
 at_detector = apriltag.Detector()
 
+
 while running:
     _, frame = cap.read()
+    frame = cv2.flip(frame, 1)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    
 
-    tags = at_detector.detect(gray)
+
+    tags = at_detector.detect(cv2.flip(gray,1))
+
+    
     all_corners = []
     if len(tags) > 0:
         for tag in tags[0:2]:
             corners = np.array(tag.corners, np.int32)
+            for corner in corners:
+                corner[0] = SCREEN_WIDTH - corner[0]
+            
+
+            """"""
+            #            [(array([480, 222], dtype=int32), array([118,  94], dtype=int32)), (array([566, 383], dtype=int32), array([33, 29], dtype=int32))] <rect(328, 240, 10, 10)
+                        
             all_corners.append(corners)
             cv2.polylines(frame, [corners], True, (0, 255, 0), thickness=3)
 
